@@ -5,12 +5,14 @@ import CreateUserService from '../services/CreateUserService';
 const usersRouter = Router();
 
 usersRouter.post('/', async (request, response) => {
-  const { name, cpf, password } = request.body;
+  const { name, userName, cpf, password } = request.body;
 
+  console.log(userName);
   const createUser = new CreateUserService();
 
   const user = await createUser.execute({
     name,
+    userName,
     cpf,
     password,
   });

@@ -1,10 +1,10 @@
 import React, { useRef, useCallback } from 'react';
 
-import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
+import { FiUser, FiLock } from 'react-icons/fi';
 import { Form } from '@unform/web';
 import { FormHandles } from '@unform/core';
 import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
 
@@ -18,7 +18,7 @@ import Input from '../../components/Input';
 import { Container, Content, AnimationContainer, Background } from './styles';
 
 interface SignInFormData {
-  email: string;
+  userName: string;
   password: string;
 }
 
@@ -33,9 +33,8 @@ const SignIn: React.FC = () => {
       try {
         formRef.current?.setErrors({});
         const schema = Yup.object().shape({
-          email: Yup.string()
-            .required('E-mail obrigatório')
-            .email('Digite um email válido'),
+          userName: Yup.string().required('Nome do usuário obrigatório'),
+
           password: Yup.string().required('Senha obrigatória'),
         });
 
@@ -43,7 +42,7 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
         await signIn({
-          email: data.email,
+          userName: data.userName,
           password: data.password,
         });
 
@@ -73,7 +72,7 @@ const SignIn: React.FC = () => {
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Faça seu login</h1>
 
-            <Input name="email" icon={FiMail} placeholder="E-mail" />
+            <Input name="userName" icon={FiUser} placeholder="Usuário" />
             <Input
               name="password"
               icon={FiLock}

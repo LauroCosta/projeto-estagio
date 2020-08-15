@@ -7,7 +7,7 @@ import authConfig from '../config/auth';
 import AppError from '../errors/AppError';
 
 interface Request {
-  cpf: string;
+  userName: string;
   password: string;
 }
 
@@ -17,13 +17,14 @@ interface Response {
 }
 
 class AuthenticateUserService {
-  public async execute({ cpf, password }: Request): Promise<Response> {
+  public async execute({ userName, password }: Request): Promise<Response> {
     const usersRepository = getRepository(User);
 
-    const user = await usersRepository.findOne({ where: { cpf } });
+    console.log(password);
+    const user = await usersRepository.findOne({ where: { userName } });
 
     if (!user) {
-      throw new AppError('CPF não cadastrado', 401);
+      throw new AppError('Usuário não cadastrado', 401);
     }
 
     const passwordMatched = await compare(password, user.password);

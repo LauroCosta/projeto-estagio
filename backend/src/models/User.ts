@@ -15,6 +15,9 @@ class User {
   name: string;
 
   @Column()
+  userName: string;
+
+  @Column()
   cpf: string;
 
   @Column()
