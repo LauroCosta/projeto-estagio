@@ -20,7 +20,6 @@ class AuthenticateUserService {
   public async execute({ userName, password }: Request): Promise<Response> {
     const usersRepository = getRepository(User);
 
-    console.log(password);
     const user = await usersRepository.findOne({ where: { userName } });
 
     if (!user) {

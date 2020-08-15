@@ -7,7 +7,6 @@ const usersRouter = Router();
 usersRouter.post('/', async (request, response) => {
   const { name, userName, cpf, password } = request.body;
 
-  console.log(userName);
   const createUser = new CreateUserService();
 
   const user = await createUser.execute({
