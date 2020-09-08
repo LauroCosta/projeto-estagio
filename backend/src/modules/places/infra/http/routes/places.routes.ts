@@ -1,14 +1,15 @@
 import { Router } from 'express';
 import { celebrate, Segments, Joi } from 'celebrate';
 
-import PlacesController from '../controllers/PlacesController';
-
 import ensureAuthenticated from '@modules/users/infra/http/middlewares/ensureAutheticaded';
+import PlacesController from '../controllers/PlacesController';
 
 const placesRouter = Router();
 const placesController = new PlacesController();
 
 placesRouter.use(ensureAuthenticated);
+
+placesRouter.get('/', placesController.index);
 
 placesRouter.post(
   '/',

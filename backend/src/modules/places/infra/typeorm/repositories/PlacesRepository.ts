@@ -1,4 +1,4 @@
-import { getRepository, Repository, Not } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 
 import IPlacesRepository from '@modules/places/repositories/IPlacesRepository';
 
@@ -11,20 +11,28 @@ class PlacesRepository implements IPlacesRepository {
     this.ormRepository = getRepository(Place);
   }
 
+  public async index(): Promise<Place[]> {
+    const places = await this.ormRepository.find();
+
+    return places;
+  }
+
   public async findById(id: string): Promise<Place | undefined> {
     const place = await this.ormRepository.findOne(id);
 
     return place;
   }
 
-  public async findByDescription(description: string): Promise<Place | undefined> {
+  public async findByDescription(
+    description: string,
+  ): Promise<Place | undefined> {
     const place = await this.ormRepository.findOne({ where: { description } });
 
     return place;
   }
 
   public async create(description: string): Promise<Place> {
-    const place = this.ormRepository.create({description});
+    const place = this.ormRepository.create({ description });
 
     await this.ormRepository.save(place);
 
