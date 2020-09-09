@@ -12,6 +12,10 @@ import ISpecialtiesRepository from '@modules/specialties/repositories/ISpecialti
 import SpecialtiesRepository from '@modules/specialties/infra/typeorm/repositories/SpecialtiesRepository';
 
 
+import IProfessionalsRepository from '@modules/professionals/repositories/IProfessionalsRepository';
+import ProfessionalsRepository from '@modules/professionals/infra/typeorm/repositories/ProfessionalsRepository';
+
+
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository,
@@ -26,3 +30,9 @@ container.registerSingleton<ISpecialtiesRepository>(
   'SpecialtiesRepository',
   SpecialtiesRepository,
 );
+
+container.registerSingleton<IProfessionalsRepository>(
+  'ProfessionalsRepository',
+  ProfessionalsRepository,
+);
+
