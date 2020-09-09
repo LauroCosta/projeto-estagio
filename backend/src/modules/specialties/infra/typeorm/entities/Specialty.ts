@@ -16,7 +16,7 @@ class Specialty {
   @Column()
   description: string;
 
-  @ManyToMany(type => Professional, professional => professional.specialties)
+  @ManyToMany(type => Professional, professional => professional.specialties, { onDelete: 'SET NULL' })
   professionals: Professional[];
 
   @CreateDateColumn()

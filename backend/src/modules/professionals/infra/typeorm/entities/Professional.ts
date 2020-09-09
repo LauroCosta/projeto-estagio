@@ -22,7 +22,7 @@ class Professional {
   @CreateDateColumn()
   created_at: Date;
 
-  @ManyToMany(type => Specialty, specialty => specialty.professionals)
+  @ManyToMany(type => Specialty, specialty => specialty.professionals, { onDelete: 'SET NULL' })
   @JoinTable()
   specialties: Specialty[];
 
