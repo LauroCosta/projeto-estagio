@@ -21,4 +21,15 @@ placesRouter.post(
   placesController.create,
 );
 
+placesRouter.put(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      place_id: Joi.string().uuid().required(),
+      description: Joi.string().required(),
+    },
+  }),
+  placesController.update,
+);
+
 export default placesRouter;
