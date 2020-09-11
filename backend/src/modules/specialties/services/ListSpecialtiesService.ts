@@ -11,9 +11,9 @@ class ListSpecialtiesService {
   ) {}
 
   async execute(): Promise<Specialty[]> {
-    const places = this.specialtiesRepository.index();
+    const specialties = this.specialtiesRepository.index();
 
-    return places;
+    return specialties;
   }
 }
 

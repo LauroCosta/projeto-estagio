@@ -8,6 +8,8 @@ const professionalsController = new ProfessionalsController();
 
 professionalsRouter.use(ensureAuthenticated);
 
+professionalsRouter.get('/', professionalsController.index);
+
 professionalsRouter.post(
   '/',
   professionalsController.create,

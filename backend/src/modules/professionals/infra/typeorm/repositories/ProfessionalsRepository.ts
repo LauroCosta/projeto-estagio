@@ -12,6 +12,14 @@ class ProfessionalRepository implements IProfessionalsRepository {
     this.ormRepository = getRepository(Professional);
   }
 
+
+  public async index(): Promise<Professional[]> {
+    const professionals = await this.ormRepository.find({relations: ['specialties']});
+
+    return professionals;
+  }
+
+
   public async findById(id: string): Promise<Professional | undefined> {
     const professional = await this.ormRepository.findOne(id);
 

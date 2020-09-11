@@ -7,9 +7,9 @@ import UpdatePlaceService from '@modules/places/services/UpdatePLaceService';
 
 export default class PlacesController {
   public async index(request: Request, response: Response): Promise<Response> {
-    const listPLaces = container.resolve(ListPlacesService);
+    const listPlaces = container.resolve(ListPlacesService);
 
-    const places = await listPLaces.execute();
+    const places = await listPlaces.execute();
 
     return response.json(places);
   }
