@@ -9,6 +9,8 @@ const specialtiesController = new SpecialtiesController();
 
 specialtiesRouter.use(ensureAuthenticated);
 
+specialtiesRouter.get('/', specialtiesController.index);
+
 specialtiesRouter.post(
   '/',
   celebrate({
