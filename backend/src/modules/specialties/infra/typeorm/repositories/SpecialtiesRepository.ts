@@ -12,7 +12,7 @@ class SpecialtiesRepository implements ISpecialtiesRepository {
   }
 
   public async index(): Promise<Specialty[]> {
-    const specialties = await this.ormRepository.find();
+    const specialties = await this.ormRepository.find({relations: ['professionals']});
 
     return specialties;
   }
