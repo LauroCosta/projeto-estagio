@@ -6,7 +6,7 @@ export default interface ICreateMedicalRecordDTO {
   mother_name: string;
   gender: string;
   status: string;
-  isActive: Boolean
+  isActive: boolean;
   birth_date: Date;
   place: Place;
 }
