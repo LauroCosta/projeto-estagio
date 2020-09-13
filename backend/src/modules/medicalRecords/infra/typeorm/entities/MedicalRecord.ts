@@ -4,12 +4,10 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  JoinTable,
   ManyToOne,
 } from 'typeorm';
 
 import Place from '@modules/places/infra/typeorm/entities/Place';
-import { Int32 } from 'mongodb';
 
 @Entity('medical_records')
 class MedicalRecord {
@@ -19,20 +17,20 @@ class MedicalRecord {
   @Column({ unique: true })
   sequence: number;
 
-  @Column({ length: 100})
+  @Column({ length: 100 })
   name: string;
 
-  @Column({ length: 100,nullable:true})
+  @Column({ length: 100, nullable: true })
   mother_name: string;
 
-  @Column({ length: 1,nullable:true})
+  @Column({ length: 1, nullable: true })
   gender: string;
 
-  @Column({ length: 25, nullable:true})
+  @Column({ length: 25, nullable: true })
   status: string;
 
-  @Column({default:true})
-  isActive: Boolean
+  @Column({ default: true })
+  isActive: boolean;
 
   @Column('timestamp')
   birth_date: Date;

@@ -11,10 +11,11 @@ import PlacesRepository from '@modules/places/infra/typeorm/repositories/PlacesR
 import ISpecialtiesRepository from '@modules/specialties/repositories/ISpecialtiesRepository';
 import SpecialtiesRepository from '@modules/specialties/infra/typeorm/repositories/SpecialtiesRepository';
 
-
 import IProfessionalsRepository from '@modules/professionals/repositories/IProfessionalsRepository';
 import ProfessionalsRepository from '@modules/professionals/infra/typeorm/repositories/ProfessionalsRepository';
 
+import IMedicalRecordsRepository from '@modules/medicalRecords/repositories/IMedicalRecordRepository';
+import MedicalRecordsRepository from '@modules/medicalRecords/infra/typeorm/repositories/MedicalRecordsRepository';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
@@ -34,5 +35,10 @@ container.registerSingleton<ISpecialtiesRepository>(
 container.registerSingleton<IProfessionalsRepository>(
   'ProfessionalsRepository',
   ProfessionalsRepository,
+);
+
+container.registerSingleton<IMedicalRecordsRepository>(
+  'MedicalRecordsRepository',
+  MedicalRecordsRepository,
 );
 
