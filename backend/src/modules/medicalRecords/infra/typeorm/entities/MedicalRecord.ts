@@ -5,35 +5,46 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   JoinTable,
-  ManyToMany,
+  ManyToOne,
 } from 'typeorm';
 
+import Place from '@modules/places/infra/typeorm/entities/Place';
+import { Int32 } from 'mongodb';
+
 @Entity('medical_records')
-class MedicalRecords {
+class MedicalRecord {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({ unique: true })
-  sequence_number: number;
+  sequence: number;
 
-  @Column()
+  @Column({ length: 100})
   name: string;
 
-  @Column()
+  @Column({ length: 100,nullable:true})
   mother_name: string;
 
-  @Column()
-  local_id: number;
+  @Column({ length: 1,nullable:true})
+  gender: string;
 
+  @Column({ length: 25, nullable:true})
+  status: string;
+
+  @Column({default:true})
+  isActive: Boolean
+
+  @Column('timestamp')
+  birth_date: Date;
+
+  @ManyToOne(type => Place, place => place.medicalRecords)
+  place: Place;
   // @ManyToMany(
   //   type => MedicalService,
   //   medicalService => medicalService.medicalRecords,
   // )
   // @JoinTable()
   // medicalServices: MedicalService[];
-
-  @Column('timestamp')
-  birth_date: Date;
 
   @CreateDateColumn()
   created_at: Date;
@@ -42,4 +53,4 @@ class MedicalRecords {
   updated_at: Date;
 }
 
-export default MedicalRecords;
+export default MedicalRecord;

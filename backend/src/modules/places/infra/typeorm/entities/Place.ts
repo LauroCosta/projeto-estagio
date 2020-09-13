@@ -4,7 +4,10 @@ import {
     PrimaryGeneratedColumn,
     CreateDateColumn,
     UpdateDateColumn,
+    OneToMany
   } from 'typeorm';
+
+  import MedicalRecord from "@modules/medicalRecords/infra/typeorm/entities/MedicalRecord";
 
   @Entity('places')
   class Place {
@@ -13,6 +16,9 @@ import {
 
     @Column()
     description: string;
+
+    @OneToMany(type => MedicalRecord, medicalRecord => medicalRecord.place)
+    medicalRecords: MedicalRecord[];
 
     @CreateDateColumn()
     created_at: Date;
