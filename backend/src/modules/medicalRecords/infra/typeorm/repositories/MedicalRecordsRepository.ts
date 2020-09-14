@@ -1,6 +1,6 @@
 import { getRepository, Repository, Not } from 'typeorm';
 
-import IMedicalRecordsRepository from '@modules/medicalRecords/repositories/IMedicalRecordRepository';
+import IMedicalRecordsRepository from '@modules/medicalRecords/repositories/IMedicalRecordsRepository';
 import ICreateMedicalRecordDTO from '@modules/medicalRecords/dtos/ICreateMedicalRecordDTO';
 
 import MedicalRecord from '@modules/medicalRecords/infra/typeorm/entities/MedicalRecord';

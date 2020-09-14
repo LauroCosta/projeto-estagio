@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
 import MedicalRecord from '@modules/medicalRecords/infra/typeorm/entities/MedicalRecord';
-import IMedicalRecordsRepository from '../repositories/IMedicalRecordRepository';
+import IMedicalRecordsRepository from '../repositories/IMedicalRecordsRepository';
 import Place from '@modules/places/infra/typeorm/entities/Place';
 
 interface IRequest {
