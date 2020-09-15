@@ -14,7 +14,7 @@ import SpecialtiesRepository from '@modules/specialties/infra/typeorm/repositori
 import IProfessionalsRepository from '@modules/professionals/repositories/IProfessionalsRepository';
 import ProfessionalsRepository from '@modules/professionals/infra/typeorm/repositories/ProfessionalsRepository';
 
-import IMedicalRecordsRepository from '@modules/medicalRecords/repositories/IMedicalRecordRepository';
+import IMedicalRecordsRepository from '@modules/medicalRecords/repositories/IMedicalRecordsRepository';
 import MedicalRecordsRepository from '@modules/medicalRecords/infra/typeorm/repositories/MedicalRecordsRepository';
 
 container.registerSingleton<IUsersRepository>(

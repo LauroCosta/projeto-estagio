@@ -19,7 +19,11 @@ class MedicalRecordsRepository implements IMedicalRecordsRepository {
   }
 
   public async findBySequenceNumber(sequence: number): Promise<MedicalRecord | undefined> {
-    const medicalRecord = await this.ormRepository.findOne({ where: { sequence } });
+    const medicalRecord = await this.ormRepository.findOne({
+      where: { sequence },
+      relations: ['place'],
+
+    });
 
     return medicalRecord;
   }
