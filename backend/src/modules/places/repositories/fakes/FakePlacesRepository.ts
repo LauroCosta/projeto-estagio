@@ -20,16 +20,17 @@ class FakePlacesRepository implements IPlacesRepository {
 
   public async findByDescription(description: string): Promise<Place | undefined> {
     const findPlace = this.places.find(place => place.description === description);
-
     return findPlace;
   }
 
   public async create(description: string): Promise<Place> {
     const place = new Place();
 
-    Object.assign(place, { id: uuid() }, description);
+    place.id = uuid();
+    place.description = description;
 
     this.places.push(place);
+    console.log(place.description)
     return place;
   }
 
