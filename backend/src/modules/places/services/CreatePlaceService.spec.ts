@@ -18,11 +18,8 @@ describe('CreatePlace', () => {
   });
 
   it('should not be able to create a new place with the same description as another', async () => {
-
     await createPlace.execute('Teste');
 
-    await expect(
-      createPlace.execute('Teste'),
-    ).rejects.toBeInstanceOf(AppError);
+    await expect(createPlace.execute('Teste')).rejects.toBeInstanceOf(AppError);
   });
 });

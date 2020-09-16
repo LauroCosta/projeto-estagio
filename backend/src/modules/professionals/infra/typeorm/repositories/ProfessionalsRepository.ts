@@ -1,4 +1,4 @@
-import { getRepository, Repository, Not } from 'typeorm';
+import { getRepository, Repository } from 'typeorm';
 
 import IProfessionalsRepository from '@modules/professionals/repositories/IProfessionalsRepository';
 import ICreateProfessionalDTO from '@modules/professionals/dtos/ICreateProfessionalDTO';
@@ -12,13 +12,13 @@ class ProfessionalRepository implements IProfessionalsRepository {
     this.ormRepository = getRepository(Professional);
   }
 
-
   public async index(): Promise<Professional[]> {
-    const professionals = await this.ormRepository.find({relations: ['specialties']});
+    const professionals = await this.ormRepository.find({
+      relations: ['specialties'],
+    });
 
     return professionals;
   }
-
 
   public async findById(id: string): Promise<Professional | undefined> {
     const professional = await this.ormRepository.findOne(id);
@@ -32,8 +32,9 @@ class ProfessionalRepository implements IProfessionalsRepository {
     return professional;
   }
 
-
-  public async create(professionalData: ICreateProfessionalDTO): Promise<Professional> {
+  public async create(
+    professionalData: ICreateProfessionalDTO,
+  ): Promise<Professional> {
     const professional = this.ormRepository.create(professionalData);
 
     await this.ormRepository.save(professional);

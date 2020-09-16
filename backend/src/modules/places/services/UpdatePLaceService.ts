@@ -15,16 +15,15 @@ class UpdatePlaceService {
     private placesRepository: IPlacesRepository,
   ) {}
 
-  public async execute({
-    place_id,
-    description,
-  }: IRequest): Promise<Place> {
+  public async execute({ place_id, description }: IRequest): Promise<Place> {
     const place = await this.placesRepository.findById(place_id);
     if (!place) {
       throw new AppError('Place not found');
     }
 
-    const placeUpdatedDescription = await this.placesRepository.findByDescription(description);
+    const placeUpdatedDescription = await this.placesRepository.findByDescription(
+      description,
+    );
 
     if (placeUpdatedDescription && placeUpdatedDescription.id !== place_id) {
       throw new AppError('Already have a place with this description');

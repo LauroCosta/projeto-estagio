@@ -8,7 +8,6 @@ class FakePlacesRepository implements IPlacesRepository {
   private places: Place[] = [];
 
   public async index(): Promise<Place[]> {
-
     return this.places;
   }
 
@@ -18,8 +17,12 @@ class FakePlacesRepository implements IPlacesRepository {
     return findPlace;
   }
 
-  public async findByDescription(description: string): Promise<Place | undefined> {
-    const findPlace = this.places.find(place => place.description === description);
+  public async findByDescription(
+    description: string,
+  ): Promise<Place | undefined> {
+    const findPlace = this.places.find(
+      place => place.description === description,
+    );
     return findPlace;
   }
 
@@ -30,12 +33,14 @@ class FakePlacesRepository implements IPlacesRepository {
     place.description = description;
 
     this.places.push(place);
-    console.log(place.description)
+    console.log(place.description);
     return place;
   }
 
   public async save(place: Place): Promise<Place> {
-    const findIndex = this.places.findIndex(findPlace => findPlace.id === place.id);
+    const findIndex = this.places.findIndex(
+      findPlace => findPlace.id === place.id,
+    );
 
     this.places[findIndex] = place;
 

@@ -5,7 +5,6 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToMany,
-  JoinColumn,
   JoinTable,
 } from 'typeorm';
 
@@ -22,7 +21,9 @@ class Professional {
   @CreateDateColumn()
   created_at: Date;
 
-  @ManyToMany(type => Specialty, specialty => specialty.professionals, { onDelete: 'SET NULL' })
+  @ManyToMany(type => Specialty, specialty => specialty.professionals, {
+    onDelete: 'SET NULL',
+  })
   @JoinTable()
   specialties: Specialty[];
 

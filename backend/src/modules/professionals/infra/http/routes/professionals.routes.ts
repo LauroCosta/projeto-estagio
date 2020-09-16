@@ -10,10 +10,6 @@ professionalsRouter.use(ensureAuthenticated);
 
 professionalsRouter.get('/', professionalsController.index);
 
-professionalsRouter.post(
-  '/',
-  professionalsController.create,
-);
-
+professionalsRouter.post('/', professionalsController.create);
 
 export default professionalsRouter;

@@ -16,7 +16,6 @@ class CreatePlaceService {
       description,
     );
 
-
     if (checkPlaceExists) {
       throw new AppError('place already registered.');
     }

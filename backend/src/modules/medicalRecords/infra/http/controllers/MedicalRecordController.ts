@@ -5,9 +5,8 @@ import CreateMedicalRecordService from '@modules/medicalRecords/services/CreateM
 import ShowMedicalRecordService from '@modules/medicalRecords/services/ShowMedicalRecordService';
 
 export default class MedicalRecordsController {
-
   public async show(request: Request, response: Response): Promise<Response> {
-    const {sequence} = request.body;
+    const { sequence } = request.body;
 
     const showMedicalRecord = container.resolve(ShowMedicalRecordService);
 
@@ -15,7 +14,6 @@ export default class MedicalRecordsController {
 
     return response.json(medicalRecord);
   }
-
 
   public async create(request: Request, response: Response): Promise<Response> {
     const {
@@ -26,7 +24,8 @@ export default class MedicalRecordsController {
       status,
       isActive,
       birth_date,
-      place, } = request.body;
+      place,
+    } = request.body;
 
     const createMedicalRecord = container.resolve(CreateMedicalRecordService);
 

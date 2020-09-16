@@ -8,7 +8,7 @@ const medicalRecordsController = new MedicalRecordController();
 
 medicalRecordsRouter.use(ensureAuthenticated);
 
-medicalRecordsRouter.get('/',  medicalRecordsController.show);
-medicalRecordsRouter.post('/',  medicalRecordsController.create);
+medicalRecordsRouter.get('/', medicalRecordsController.show);
+medicalRecordsRouter.post('/', medicalRecordsController.create);
 
 export default medicalRecordsRouter;

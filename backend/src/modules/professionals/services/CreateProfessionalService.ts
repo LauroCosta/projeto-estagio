@@ -2,7 +2,7 @@ import { injectable, inject } from 'tsyringe';
 
 import Professional from '@modules/professionals/infra/typeorm/entities/Professional';
 import IProfessionalsRepository from '@modules/professionals/repositories/IProfessionalsRepository';
-import Specialty from "@modules/specialties/infra/typeorm/entities/Specialty";
+import Specialty from '@modules/specialties/infra/typeorm/entities/Specialty';
 
 interface IRequest {
   name: string;
@@ -17,10 +17,9 @@ class CreateProfessionalService {
   ) {}
 
   async execute({ name, specialties }: IRequest): Promise<Professional> {
-
     const professional = this.professionalsRepository.create({
       name,
-      specialties
+      specialties,
     });
 
     return professional;
