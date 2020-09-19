@@ -5,9 +5,12 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   ManyToOne,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
 
 import Place from '@modules/places/infra/typeorm/entities/Place';
+import Attendance from '@modules/attendances/infra/typeorm/entities/Attendance';
 
 @Entity('medical_records')
 class MedicalRecord {
@@ -37,12 +40,11 @@ class MedicalRecord {
 
   @ManyToOne(type => Place, place => place.medicalRecords)
   place: Place;
-  // @ManyToMany(
-  //   type => MedicalService,
-  //   medicalService => medicalService.medicalRecords,
-  // )
-  // @JoinTable()
-  // medicalServices: MedicalService[];
+
+  @ManyToMany(type => Attendance, attendance => attendance.medicalRecords, {
+    onDelete: 'SET NULL',
+  })
+  attendances: Attendance[];
 
   @CreateDateColumn()
   created_at: Date;
