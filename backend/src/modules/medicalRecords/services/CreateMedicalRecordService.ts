@@ -2,8 +2,8 @@ import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
 import MedicalRecord from '@modules/medicalRecords/infra/typeorm/entities/MedicalRecord';
-import IMedicalRecordsRepository from '../repositories/IMedicalRecordsRepository';
 import Place from '@modules/places/infra/typeorm/entities/Place';
+import IMedicalRecordsRepository from '../repositories/IMedicalRecordsRepository';
 
 interface IRequest {
   sequence: number;
@@ -21,19 +21,20 @@ class CreateMedicalRecordService {
   constructor(
     @inject('MedicalRecordsRepository')
     private medicalRecordsRepository: IMedicalRecordsRepository,
-
   ) {}
 
   async execute(medicalRecordData: IRequest): Promise<MedicalRecord> {
     const checkMedicalRecordExists = await this.medicalRecordsRepository.findBySequenceNumber(
-      medicalRecordData.sequence
+      medicalRecordData.sequence,
     );
 
     if (checkMedicalRecordExists) {
       throw new AppError('Medical record exists');
     }
 
-    const medicalRecord = this.medicalRecordsRepository.create(medicalRecordData);
+    const medicalRecord = this.medicalRecordsRepository.create(
+      medicalRecordData,
+    );
 
     return medicalRecord;
   }

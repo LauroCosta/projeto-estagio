@@ -6,6 +6,7 @@ import placesRouter from '@modules/places/infra/http/routes/places.routes';
 import specialtiesRouter from '@modules/specialties/infra/http/routes/specialties.routes';
 import professionalsRouter from '@modules/professionals/infra/http/routes/professionals.routes';
 import medicalRecordsRouter from '@modules/medicalRecords/infra/http/routes/medicalRecords.routes';
+import attendancesRouter from '@modules/attendances/infra/http/routers/attendances.routes';
 
 const routes = Router();
 
@@ -16,5 +17,6 @@ routes.use('/specialties', specialtiesRouter);
 routes.use('/places', placesRouter);
 routes.use('/medicalRecords', medicalRecordsRouter);
 routes.use('/professionals', professionalsRouter);
+routes.use('/attendances', attendancesRouter);
 
 export default routes;
