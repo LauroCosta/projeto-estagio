@@ -29,11 +29,12 @@ class AttendancesRepository implements IAttendancesRepository {
 
     const attendances = await this.ormRepository.find({
       where: {
-        date: Raw(
+        date_attendance: Raw(
           dateFieldName =>
             `to_char(${dateFieldName}, 'DD-MM-YYYY') = '${parsedDay}-${parsedMonth}-${year}'`,
         ),
       },
+      relations: ['medicalRecords'],
     });
 
     return attendances;

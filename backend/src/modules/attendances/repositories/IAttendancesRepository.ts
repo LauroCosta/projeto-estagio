@@ -6,7 +6,7 @@ export default interface IAttendancesRepository {
   findById(id: string): Promise<Attendance | undefined>;
   findByDateAttendance(
     dateAttendance: IFindAllAttendancesInDayDTO,
-  ): Promise<Attendance[] | undefined>;
+  ): Promise<Attendance[]>;
   create(data: ICreateAttendanceDTO): Promise<Attendance>;
   save(data: Attendance): Promise<Attendance>;
 }
