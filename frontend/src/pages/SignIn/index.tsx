@@ -18,7 +18,7 @@ import Input from '../../components/Input';
 import { Container, Content, AnimationContainer, Background } from './styles';
 
 interface SignInFormData {
-  userName: string;
+  email: string;
   password: string;
 }
 
@@ -33,7 +33,7 @@ const SignIn: React.FC = () => {
       try {
         formRef.current?.setErrors({});
         const schema = Yup.object().shape({
-          userName: Yup.string().required('Nome do usuário obrigatório'),
+          email: Yup.string().required('Email obrigatório'),
 
           password: Yup.string().required('Senha obrigatória'),
         });
@@ -42,7 +42,7 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
         await signIn({
-          userName: data.userName,
+          email: data.email,
           password: data.password,
         });
 
@@ -72,7 +72,12 @@ const SignIn: React.FC = () => {
           <Form ref={formRef} onSubmit={handleSubmit}>
             <h1>Faça seu login</h1>
 
-            <Input name="userName" icon={FiUser} placeholder="Usuário" />
+            <Input
+              type="email"
+              name="email"
+              icon={FiUser}
+              placeholder="Email"
+            />
             <Input
               name="password"
               icon={FiLock}

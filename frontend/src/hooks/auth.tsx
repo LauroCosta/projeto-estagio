@@ -8,7 +8,7 @@ interface AuthState {
 }
 
 interface SignInCredentials {
-  userName: string;
+  email: string;
   password: string;
 }
 
@@ -32,9 +32,9 @@ export const AuthProvider: React.FC = ({ children }) => {
     return {} as AuthState;
   });
 
-  const signIn = useCallback(async ({ userName, password }) => {
+  const signIn = useCallback(async ({ email, password }) => {
     const response = await api.post('sessions', {
-      userName,
+      email,
       password,
     });
 
