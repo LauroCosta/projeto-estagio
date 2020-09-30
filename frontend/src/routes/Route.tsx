@@ -21,23 +21,27 @@ const Route: React.FC<RouteProps> = ({
   const { user } = useAuth();
 
   return (
-    <>
-      <ReactDOMRoute
-        {...rest}
-        render={({ location }) => {
-          return isPrivate === !!user ? (
-            <Component />
-          ) : (
+    <ReactDOMRoute
+      {...rest}
+      render={({ location }) => {
+        return isPrivate === !!user ? (
+          <>
+            <Layout>
+              <Component />
+            </Layout>
+          </>
+        ) : (
+          <>
             <Redirect
               to={{
                 pathname: isPrivate ? '/' : '/dashboard',
                 state: { from: location },
               }}
             />
-          );
-        }}
-      />
-    </>
+          </>
+        );
+      }}
+    />
   );
 };
 

@@ -11,7 +11,8 @@ const Sidebar: React.FC = () => {
   return (
     <Container className={visible ? 'show' : ''}>
       <Content>
-        <Item to="/">Home</Item>
+        <Item to="/dashboard">Dashboard</Item>
+        <Item to="/place">Locais</Item>
         <Item to="/about">About</Item>
       </Content>
     </Container>
