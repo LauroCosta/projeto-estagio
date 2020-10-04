@@ -20,6 +20,9 @@ import MedicalRecordsRepository from '@modules/medicalRecords/infra/typeorm/repo
 import IAttendancesRepository from '@modules/attendances/repositories/IAttendancesRepository';
 import AttendancesRepository from '@modules/attendances/infra/typeorm/repositories/AttendancesRepository';
 
+import IHMPatientsRepository from '@modules/patientsHM/repositories/IHMPatientsRepository';
+import HMPatientsRepository from '@modules/patientsHM/infra/typeorm/repositories/HMPatientsRepository';
+
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository,
@@ -48,4 +51,9 @@ container.registerSingleton<IMedicalRecordsRepository>(
 container.registerSingleton<IAttendancesRepository>(
   'AttendancesRepository',
   AttendancesRepository,
+);
+
+container.registerSingleton<IHMPatientsRepository>(
+  'HMPatientsRepository',
+  HMPatientsRepository,
 );

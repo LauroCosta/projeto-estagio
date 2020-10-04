@@ -11,7 +11,9 @@ class ShowMedicalRecordsService {
   ) {}
 
   async execute(sequence: number): Promise<MedicalRecord | undefined> {
-    const medicalRecord = this.medicalRecordsRepository.findBySequenceNumber(sequence);
+    const medicalRecord = this.medicalRecordsRepository.findBySequenceNumber(
+      sequence,
+    );
 
     return medicalRecord;
   }
