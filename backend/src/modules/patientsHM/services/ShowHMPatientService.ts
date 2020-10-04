@@ -1,17 +1,17 @@
 import { injectable, inject } from 'tsyringe';
 
-import HMPatient from '@modules/patientsHM/infra/typeorm/entities/HmPatient';
-import IHMPatientRepository from '../repositories/IHMPatientRepository';
+import HMPatient from '@modules/patientsHM/infra/typeorm/entitie/HMPatient';
+import IHMPatientsRepository from '../repositories/IHMPatientsRepository';
 
 @injectable()
 class ShowHMPatientService {
   constructor(
-    @inject('HMPatientRepository')
-    private patientRepository: IHMPatientRepository,
+    @inject('HMPatientsRepository')
+    private patientsRepository: IHMPatientsRepository,
   ) {}
 
   async execute(id: number): Promise<HMPatient | undefined> {
-    const patient = this.patientRepository.findById(id);
+    const patient = this.patientsRepository.findById(id);
 
     return patient;
   }

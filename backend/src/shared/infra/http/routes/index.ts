@@ -19,6 +19,6 @@ routes.use('/places', placesRouter);
 routes.use('/medicalRecords', medicalRecordsRouter);
 routes.use('/professionals', professionalsRouter);
 routes.use('/attendances', attendancesRouter);
-routes.use('/patientsHM', patientsHMRouter);
+routes.use('/patients', patientsHMRouter);
 
 export default routes;

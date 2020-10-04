@@ -1,8 +1,12 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity('hm_patient', { schema: 'teste' })
-class HmPatient {
-  @Column('int', { name: 'patient_id' })
+@Entity('hm_patient', {
+  engine: 'mysql',
+  name: 'HMdatabase',
+  database: 'teste',
+})
+class HMPatient {
+  @PrimaryColumn('int', { name: 'patient_id' })
   patientId: number;
 
   @Column('varchar', { name: 'patient_sus', nullable: true, length: 15 })
@@ -103,4 +107,4 @@ class HmPatient {
   patientStatus: string;
 }
 
-export default HmPatient;
+export default HMPatient;

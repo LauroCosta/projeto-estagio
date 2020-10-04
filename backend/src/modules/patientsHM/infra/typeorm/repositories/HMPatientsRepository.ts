@@ -2,13 +2,13 @@ import { getRepository, Repository } from 'typeorm';
 
 import IHMPatientsRepository from '@modules/patientsHM/repositories/IHMPatientsRepository';
 
-import HMPatient from '@modules/patientsHM/infra/typeorm/entities/HmPatient';
+import HMPatient from '@modules/patientsHM/infra/typeorm/entitie/HMPatient';
 
 class HMPatientsRepository implements IHMPatientsRepository {
   private ormRepository: Repository<HMPatient>;
 
   constructor() {
-    this.ormRepository = getRepository(HMPatient, 'mysql');
+    this.ormRepository = getRepository(HMPatient, 'HMdatabase');
   }
 
   public async index(): Promise<HMPatient[]> {

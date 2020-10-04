@@ -1,4 +1,4 @@
-import HMPatient from '../infra/typeorm/entities/HmPatient';
+import HMPatient from '../infra/typeorm/entitie/HMPatient';
 
 export default interface IHMPatientsRepository {
   index(): Promise<HMPatient[]>;
