@@ -86,8 +86,6 @@ const SignIn: React.FC = () => {
             />
 
             <Button type="submit">Entrar</Button>
-
-            <a href="forgot">Esqueci minha senha</a>
           </Form>
         </AnimationContainer>
       </Content>

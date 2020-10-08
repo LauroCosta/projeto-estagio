@@ -13,6 +13,7 @@ const Sidebar: React.FC = () => {
       <Content>
         <Item to="/dashboard">Dashboard</Item>
         <Item to="/place">Locais</Item>
+        <Item to="/buscar">Buscar</Item>
         <Item to="/about">About</Item>
       </Content>
     </Container>
